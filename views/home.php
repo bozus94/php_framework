@@ -1,1 +1,1 @@
-<h1>Bienvenidos a mi pagina </h1>
+<h1>Bienvenidos a mi pagina, <?= $mensaje ?> </h1>

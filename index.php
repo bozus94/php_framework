@@ -2,10 +2,11 @@
 require 'app/Template.php';
 require 'app/Route.php';
 
-
+$data = [
+    'mensaje' => 'Esto es un texto interactivo'
+];
 $title = 'AppOrdenada';
-$view = new Template('views/home.php');
-$content = $view->getContent();
+$content = new Template('views/home.php', $data);
 include_once 'views/app.php';
 
 
