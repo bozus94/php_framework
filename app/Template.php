@@ -15,6 +15,10 @@ class Template{
     {
         return $this->content;
     }
+
+    public function render(){
+        echo $this->content;
+    }
 }
 
 
