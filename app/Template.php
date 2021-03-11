@@ -1,6 +1,7 @@
 <?php
 
 class Template{
+    
     private $content;
 
     public function __construct($path, $data = [])
@@ -20,5 +21,3 @@ class Template{
         echo $this->content;
     }
 }
-
-

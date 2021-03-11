@@ -9,6 +9,7 @@
 }
 
 body{
+    z-index: -1;
     background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
     background-repeat: no-repeat;
     background-position: center;
@@ -16,30 +17,35 @@ body{
     min-height: 100vh;
     color: #304352;
 }
+
 .container{
     max-width:  1000px;
     margin:     0 auto;
     text-align: center;
 }
+
 header{
     background-color: #deecdd;
     width: 100%;
-    position: fixed;
+    position: static;
     top: 0;
     left: 0;
     height: 60px;
     padding: 15px 0;
     border-bottom: 1px solid #deecdd;
 }
+
 header a{
     color: #304352; 
     font-size: 19px;
     text-decoration: none;
 }
+
 header .logo{
     font-weight: 500;
     font-size: 29px;
 }
+
 header nav{
     display: flex;
     align-items: center;
@@ -58,6 +64,7 @@ h1.title{
     font-weight: 400;
     color: #485563;
 }
+
 main{
     padding-top: 70px;
     display: flex;
@@ -66,9 +73,11 @@ main{
     align-items: center;
     min-height: calc(100vh - 60px);
 }
+
 p, h1{
     margin: .9rem 0;
 }
+
 p{
     font-size: 16px;
     line-height: 28px;
