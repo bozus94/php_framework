@@ -49,12 +49,5 @@ class Database{
                 # code...
                 break;
         }
-        
-        
-    }
-
-    public function queryObject($sql)
-    {
-        
     }
 }

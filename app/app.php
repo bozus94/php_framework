@@ -56,17 +56,35 @@ class App{
                 require "models/{$modelName}.php";
                 echo "Cargando el modelo {$modelName} <br>";
                 $this->model = new $modelName($this->db);
+                $this->callMethod($this->model);
             }else{
                 die ("El modelo {$modelName} no existe");
             }
+        }else{
+            $this->render(new Template('views/home.php', ['mensaje' => 'soy un texto interactivo']));
         }
     }
 
     public function callMethod($model)
     {
-        
+        $this->method = $this->args[0] ?? null;
+        $modelMethods = get_class_methods($model);
+        if(!isset($this->method) ){
+            $model->index();
+        }else{
+            if(in_array($this->method, $modelMethods)){
+                echo "Ejectuando el metodo {$this->method} ";
+            }else{
+                echo "El metodo {$this->method} no existe";
+            }
+        }
     }
 
-    
+    public function render($template)
+    {
+        $view = new Template('views/app.php', ['title' => 'AppOrdenada', 'content' => $template]);
+        $view->render();
+    }
 }
+
 
