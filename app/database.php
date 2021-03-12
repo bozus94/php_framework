@@ -30,8 +30,8 @@ class Database{
                 while($row = $result->fetch_assoc()){
                     $arr[] = $row;
 
-                    return $arr;
                 }   
+                return $arr;
                 break;
                 
             case 'object':
@@ -46,8 +46,15 @@ class Database{
                 break;
             
             default:
-                # code...
+                echo 'No se encontraron resultados';
                 break;
         }
+    }
+
+    public function queryOne($sql){
+        
+        $result = $this->db->query($sql);
+        return $result->fetch_object();
+
     }
 }
