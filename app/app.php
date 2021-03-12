@@ -54,7 +54,6 @@ class App{
             $modelName = ucfirst(strtolower($model));
             if(file_exists("models/{$model}.php")){
                 require "models/{$modelName}.php";
-                echo "Cargando el modelo {$modelName} <br>";
                 $this->model = new $modelName($this->db);
                 $this->callMethod($this->model);
             }else{
@@ -67,13 +66,14 @@ class App{
 
     public function callMethod($model)
     {
-        $this->method = $this->args[0] ?? null;
+        $method = $this->args[0] ?? null;
+        $param = $this->args[1] ?? null; 
         $modelMethods = get_class_methods($model);
-        if(!isset($this->method) ){
+        if(!isset($method) ){
             $model->index();
         }else{
-            if(in_array($this->method, $modelMethods)){
-                echo "Ejectuando el metodo {$this->method} ";
+            if(in_array($method, $modelMethods)){
+                $model->$method($param);
             }else{
                 echo "El metodo {$this->method} no existe";
             }

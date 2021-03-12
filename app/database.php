@@ -20,35 +20,18 @@ class Database{
         }
     } 
     
-    public function queryAll($sql, $response = ' array')
+    public function queryAll($sql)
     {
         $arr = [];
-        switch ($response) {
-            case 'array':
-                $result = $this->db->query($sql);
-        
-                while($row = $result->fetch_assoc()){
-                    $arr[] = $row;
 
-                }   
-                return $arr;
-                break;
-                
-            case 'object':
-                $result = $this->db->query($sql);
+        $result = $this->db->query($sql);
 
-                $arr = [];
-                while($row = $result->fetch_object()){
-                    $arr[] = $row;
-                }
-                return (object) $arr;
-
-                break;
-            
-            default:
-                echo 'No se encontraron resultados';
-                break;
+        $arr = [];
+        while($row = $result->fetch_object()){
+            $arr[] = $row;
         }
+        return $arr;
+
     }
 
     public function queryOne($sql){
