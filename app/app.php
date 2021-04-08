@@ -1,6 +1,8 @@
 <?php 
 require 'app/Uri.php';
-require 'app/database.php';
+require 'app/Database.php';
+require 'app/Helpers.php';
+require 'app/Template.php';
 
 
 class App{
@@ -53,37 +55,43 @@ class App{
             $model = $uriParts[0];
             $modelName = ucfirst(strtolower($model));
             if(file_exists("models/{$model}.php")){
-                require "models/{$modelName}.php";
-                echo "Cargando el modelo {$modelName} <br>";
+                $template = null;
+                Helpers::require_if_exists("models/{$modelName}.php");
+
                 $this->model = new $modelName($this->db);
-                $this->callMethod($this->model);
+                $template = $this->callMethod($this->model);
+                $this->render($template);
             }else{
                 die ("El modelo {$modelName} no existe");
             }
         }else{
-            $this->render(new Template('views/home.php', ['mensaje' => 'soy un texto interactivo']));
-        }
+            $content = new Template('views/home.php', ['mensaje' => 'soy un texto interactivo']);
+            $this->render($content);
+        }   
     }
 
     public function callMethod($model)
     {
-        $this->method = $this->args[0] ?? null;
+        $method = $this->args[0] ?? null;
+        $param = $this->args[1] ?? null; 
+            
         $modelMethods = get_class_methods($model);
-        if(!isset($this->method) ){
+        if(!isset($method) ){
             $model->index();
         }else{
-            if(in_array($this->method, $modelMethods)){
-                echo "Ejectuando el metodo {$this->method} ";
+            if(in_array($method, $modelMethods)){
+                $model->$method($param);
             }else{
                 echo "El metodo {$this->method} no existe";
             }
         }
     }
 
-    public function render($template)
+    public function render($content)
     {
-        $view = new Template('views/app.php', ['title' => 'AppOrdenada', 'content' => $template]);
-        $view->render();
+        var_dump($content);
+        $view = new Template('views/app.php', ['title' => 'AppOrdenada', 'content' => $content]);
+        echo $view;
     }
 }
 

@@ -1,5 +1,4 @@
 <?php
-require 'app/app.php';
-require 'app/Template.php';
 
+require 'app/app.php';
 new app();

@@ -1,14 +1,14 @@
 <?php
 
 class Template{
-    
+
     private $content;
 
     public function __construct($path, $data = [])
     {
         extract($data);
         ob_start();
-        include_once  $path;
+        Helpers::require_if_exists($path);
         $this->content = ob_get_clean();
     }
 

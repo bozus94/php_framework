@@ -6,7 +6,7 @@ class Database{
 
     public function __construct()
     {
-        $this->db = new mysqli('localhost','root', '', 'php_shopping');
+        $this->db = new mysqli('localhost','root', '', 'appordenada');
         if ($this->db->connect_errno) {
 
             echo "Lo sentimos, este sitio web está experimentando problemas.";
@@ -20,41 +20,23 @@ class Database{
         }
     } 
     
-    public function queryAll($sql, $response = ' array')
+    public function queryAll($sql)
     {
         $arr = [];
-        switch ($response) {
-            case 'array':
-                $result = $this->db->query($sql);
-        
-                while($row = $result->fetch_assoc()){
-                    $arr[] = $row;
 
-                }   
-                return $arr;
-                break;
-                
-            case 'object':
-                $result = $this->db->query($sql);
-
-                $arr = [];
-                while($row = $result->fetch_object()){
-                    $arr[] = $row;
-                }
-                return (object) $arr;
-
-                break;
-            
-            default:
-                echo 'No se encontraron resultados';
-                break;
+        $result = $this->db->query($sql);
+        if($result){
+            while($row = $result->fetch_object()){
+                $arr[] = $row;
+            }
+        }else{
+            die ('No se hay registro en la ultima peticion');
         }
+        return $arr;
     }
 
     public function queryOne($sql){
-        
         $result = $this->db->query($sql);
         return $result->fetch_object();
-
     }
 }

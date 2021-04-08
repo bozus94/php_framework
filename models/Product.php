@@ -6,15 +6,20 @@ class Product{
     public function __construct($db)
     {
         $this->db = $db;
-        echo 'Clase '. get_class() . ' cargada correctamente <br>' ;
     } 
 
     public function index()
     {
-        echo 'ejecutando el modelo index';
+        $products = $this->db->queryAll("SELECT * FROM products");
+        return new Template('views/products/index.php', ['products' => $products]);
     }
-    public function create()
+
+    public function create($id)
     {
-        echo 'ejecutando el modelo create';
+        echo 'ejecutando el modelo create <br>';
+
+        if($id !== null){
+            echo " El id proporcionado es: {$id} <br>";
+        }
     }
 }
