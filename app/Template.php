@@ -24,7 +24,7 @@ class Template{
     }
     protected function getLayout(){
         ob_start();
-        Helpers::require_if_exists(App::rootPath);
+        Helpers::require_if_exists(App::rootPath . '/view/layout/');
         $this->content = ob_get_clean();
     }
 

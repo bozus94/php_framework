@@ -8,6 +8,7 @@ require 'app/Template.php';
 class App{
 
     private $db, $args, $uri, $model, $method;
+    protected static $rootpath;
 
     public function __construct()
     {

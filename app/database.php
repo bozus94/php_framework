@@ -25,6 +25,7 @@ class Database{
         $arr = [];
 
         $result = $this->db->query($sql);
+<<<<<<< HEAD
         if($result){
             while($row = $result->fetch_object()){
                 $arr[] = $row;
@@ -33,6 +34,15 @@ class Database{
             die ('No se hay registro en la ultima peticion');
         }
         return $arr;
+=======
+
+        $arr = [];
+        while($row = $result->fetch_object()){
+            $arr[] = $row;
+        }
+        return $arr;
+
+>>>>>>> 83b521ae43a3f3b1be426ea8ce81ba866e7b47ba
     }
 
     public function queryOne($sql){
