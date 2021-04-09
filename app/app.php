@@ -11,6 +11,7 @@ class App{
 
     public function __construct()
     {
+        self::rootPath = dirname(__DIR__);
         $this->dbConnect();
         $this->loadUriData();
         $this->loadModel();
@@ -89,7 +90,6 @@ class App{
 
     public function render($content)
     {
-        var_dump($content);
         $view = new Template('views/app.php', ['title' => 'AppOrdenada', 'content' => $content]);
         echo $view;
     }
