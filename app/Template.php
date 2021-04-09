@@ -1,34 +1,43 @@
 <?php
 
-class Template{
+class Template
+{
 
-    private $content;
+    private $content, $layout, $data, $view;
 
-    public function __construct($path, $data = [])
+    public function __construct($view, $data = [], $layout = 'app')
     {
-        extract($data);
-        ob_start();
-        Helpers::require_if_exists($path);
-        $this->content = ob_get_clean();
+        $this->content = $view;
+        $this->data = $data;
+        $this->layout = $layout;
+
+        $this->extractData();
+        echo $this->renderView();
     }
 
-    public function __toString()
+    protected function getContent()
     {
-        return $this->content;
+        ob_start();
+        Helpers::require_if_exists(App::$rootPath . "/views/$this->content.php");
+        return ob_get_clean();
     }
 
-    protected function getContent($path){
+    protected function getLayout()
+    {
         ob_start();
-        Helpers::require_if_exists($path);
-        $this->content = ob_get_clean();
-    }
-    protected function getLayout(){
-        ob_start();
-        Helpers::require_if_exists(App::rootPath . '/view/layout/');
-        $this->content = ob_get_clean();
+        Helpers::require_if_exists(App::$rootPath . "/views/layouts/$this->layout.php");
+        return ob_get_clean();
     }
 
-    public function render(){
-        echo $this->content;
+    public function renderView()
+    {
+        $content = $this->getContent();
+        $layout = $this->getLayout();
+        return str_replace('{{content}}', $content, $layout);
+    }
+
+    public function extractData()
+    {
+        return extract($this->data);
     }
 }

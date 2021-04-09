@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="/assets/app.css">
     <title><?= $title ?? '' ?></title>
 </head>
+
 <body>
     <div class="container">
         <header>
@@ -20,8 +22,10 @@
         </header>
 
         <main>
-            <?= $content ?? '' ?>
+            {{content}}
         </main>
+
     </div>
 </body>
+
 </html>

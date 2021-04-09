@@ -1,4 +1,5 @@
 <?php
 
 require 'app/app.php';
-new app();
+
+new app(__DIR__);
