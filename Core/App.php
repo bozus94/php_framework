@@ -1,8 +1,8 @@
 <?php
-require 'app/Uri.php';
-require 'app/Database.php';
-require 'app/Helpers.php';
-require 'app/Template.php';
+require 'core/Uri.php';
+require 'core/Database.php';
+require 'core/Helpers.php';
+require 'core/Template.php';
 
 
 class App
