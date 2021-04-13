@@ -2,42 +2,30 @@
 
 class Template
 {
-
-    private $content, $layout, $data, $view;
-
     public function __construct($view, $data = [], $layout = 'app')
     {
-        $this->content = $view;
-        $this->data = $data;
-        $this->layout = $layout;
-
-        $this->extractData();
-        echo $this->renderView();
+        echo $this->renderView($view, $data, $layout);
     }
 
-    protected function getContent()
+    protected function getContent($view, $params)
     {
+
         ob_start();
-        Helpers::require_if_exists(App::$rootPath . "/views/$this->content.php");
+        Helpers::inlclude_if_exists(App::$rootPath . "/views/$view.php", $params);
         return ob_get_clean();
     }
 
-    protected function getLayout()
+    protected function getLayout($layout)
     {
         ob_start();
-        Helpers::require_if_exists(App::$rootPath . "/views/layouts/$this->layout.php");
+        Helpers::inlclude_if_exists(App::$rootPath . "/views/layouts/$layout.php");
         return ob_get_clean();
     }
 
-    public function renderView()
+    public function renderView($view, $params, $layout)
     {
-        $content = $this->getContent();
-        $layout = $this->getLayout();
-        return str_replace('{{content}}', $content, $layout);
-    }
-
-    public function extractData()
-    {
-        return extract($this->data);
+        $baselayout = $this->getLayout($layout);
+        $content = $this->getContent($view, $params);
+        return str_replace('{{content}}', $content, $baselayout);
     }
 }

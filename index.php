@@ -1,5 +1,6 @@
 <?php
 
+
 require 'app/app.php';
 
-new app(__DIR__);
+new app(realpath(__DIR__));
