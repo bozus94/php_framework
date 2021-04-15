@@ -1,6 +1,6 @@
 <?php
 
-class Uri{
+class Router{
     private $uri;
 
     public function __construct()

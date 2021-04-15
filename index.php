@@ -1,6 +1,9 @@
 <?php
 
+require 'core/App.php';
 
-require 'Core/App.php';
+$app = new App(realpath(__DIR__));
 
-new app(realpath(__DIR__));
+Helpers::require_if_exists('core/Routes.php');
+
+$app->run();

@@ -1,5 +1,5 @@
 <?php
-require 'core/Uri.php';
+require 'core/Router.php';
 require 'core/Database.php';
 require 'core/Helpers.php';
 require 'core/Template.php';

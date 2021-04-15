@@ -11,14 +11,14 @@ class Template
     {
 
         ob_start();
-        Helpers::inlclude_if_exists(App::$rootPath . "/views/$view.php", $params);
+        Helpers::inlclude_if_exists(App::$rootPath . "/resources/views/$view.php", $params);
         return ob_get_clean();
     }
 
     protected function getLayout($layout)
     {
         ob_start();
-        Helpers::inlclude_if_exists(App::$rootPath . "/views/layouts/$layout.php");
+        Helpers::inlclude_if_exists(App::$rootPath . "/resources/views/layouts/$layout.php");
         return ob_get_clean();
     }
 
