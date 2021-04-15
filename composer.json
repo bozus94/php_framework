@@ -1,0 +1,17 @@
+{
+    "name": "paralelo1/php_appordenada",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Bozus94",
+            "email": "bj_ortega@hotmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "require": {
+    }
+}
