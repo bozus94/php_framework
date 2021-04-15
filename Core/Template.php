@@ -1,5 +1,7 @@
 <?php
 
+namespace app\core;
+
 class Template
 {
     public function __construct($view, $data = [], $layout = 'app')
@@ -11,14 +13,14 @@ class Template
     {
 
         ob_start();
-        Helpers::inlclude_if_exists(App::$rootPath . "/resources/views/$view.php", $params);
+        Helpers::inlclude_if_exists(Application::$rootPath . "/resources/views/$view.php", $params);
         return ob_get_clean();
     }
 
     protected function getLayout($layout)
     {
         ob_start();
-        Helpers::inlclude_if_exists(App::$rootPath . "/resources/views/layouts/$layout.php");
+        Helpers::inlclude_if_exists(Application::$rootPath . "/resources/views/layouts/$layout.php");
         return ob_get_clean();
     }
 

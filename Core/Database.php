@@ -1,5 +1,7 @@
 <?php
 
+namespace app\core;
+
 class Database
 {
 
@@ -7,7 +9,7 @@ class Database
 
     public function __construct()
     {
-        $this->db = new mysqli('localhost', 'root', '', 'appordenada');
+        $this->db = new \mysqli('localhost', 'root', '', 'appordenada');
         if ($this->db->connect_errno) {
 
             echo "Lo sentimos, este sitio web está experimentando problemas.";

@@ -1,9 +1,11 @@
 <?php
+include_once __DIR__ . 'vendor/autoload.php';
 
-require 'core/App.php';
+use app\core\Application;
+use app\core\Helpers;
 
-$app = new App(realpath(__DIR__));
+$app = new Application(realpath(__DIR__));
 
-Helpers::require_if_exists('core/Routes.php');
+Helpers::require_if_exists('Routes.php');
 
 $app->run();
