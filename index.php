@@ -1,11 +1,16 @@
 <?php
-include_once __DIR__ . 'vendor/autoload.php';
+include_once __DIR__ . '/vendor/autoload.php';
 
 use app\core\Application;
-use app\core\Helpers;
 
 $app = new Application(realpath(__DIR__));
 
-Helpers::require_if_exists('Routes.php');
+$app->router->get('/', function () {
+    echo 'Pagina de inicio';
+});
+
+$app->router->get('/about', function () {
+    echo 'Pagina acerca de';
+});
 
 $app->run();
