@@ -4,7 +4,7 @@ namespace app\core;
 
 class Template
 {
-    public function __construct($view, $data = [], $layout = 'app')
+    public function __construct($view, $data = [], $layout = 'boostrap')
     {
         echo $this->renderView($view, $data, $layout);
     }

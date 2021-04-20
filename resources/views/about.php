@@ -1,1 +1,1 @@
-<h1>bienvenidos a la pagina acerca de </h1>
+<h1>Pagina acerca de </h1>

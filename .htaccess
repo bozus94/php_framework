@@ -3,6 +3,11 @@
         Options -MultiViews -Indexes
     </IfModule>
 
+    <FilesMatch "\.(htaccess|json|ini|phps|log|sql|txt)$">
+        Order Allow,Deny
+        Deny from all
+    </FilesMatch>
+
     RewriteEngine On
 
     # Handle Authorization Header

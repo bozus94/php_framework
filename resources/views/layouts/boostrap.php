@@ -13,30 +13,32 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <div class="container">
-                    <a class="navbar-brand" href="#">Navbar</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/">Inicio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/about">About</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+    <header class="p-3 bg-dark text-white">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <div class="h3">Framework</div>
+                </a>
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="/" class="nav-link px-2 text-secondary">Inicio</a></li>
+                    <li><a href="/contact" class="nav-link px-2 text-white">Contacto</a></li>
+                    <li><a href="/about" class="nav-link px-2 text-white">Acerda De</a></li>
+                </ul>
+
+                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                    <input type="search" class="form-control form-control-dark" placeholder="Search...">
+                </form>
+
+                <!-- <div class="text-end">
+                    <button type="button" class="btn btn-outline-light me-2">Login</button>
+                    <button type="button" class="btn btn-warning">Sign-up</button>
+                </div> -->
             </div>
-        </nav>
+        </div>
     </header>
     <main>
-        <div class="container">{{content}}</div>
+        {{content}}
     </main>
 
     <!-- Optional JavaScript; choose one of the two! -->

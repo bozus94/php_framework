@@ -18,7 +18,7 @@ class Helpers
                 include $path;
             }
         } else {
-            echo 'Se ha producido un error al cargar el archivo: ' . $path;
+            echo 'Not found: ' . $path;
         }
     }
 
@@ -37,5 +37,13 @@ class Helpers
         } else {
             echo 'Se ha producido un error al cargar el archivo: ' . $path;
         }
+    }
+
+    public static function pre_dump($param)
+    {
+        echo "<pre>";
+        var_dump($param);
+        echo "</pre>";
+        exit;
     }
 }
