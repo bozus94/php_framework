@@ -37,11 +37,16 @@ class Router
             return new Template($callback, $this->params);
         }
 
+        if (\is_array($callback)) {
+            $callback[0] = new $callback[0];
+        }
+
         if ($callback === false) {
             $this->response->setResponseCode(404);
             return new Template('errors/_404');
         }
-        call_user_func($callback);
+
+        call_user_func($callback, $this->request);
     }
 
     public function loadParams(array $params = [])
