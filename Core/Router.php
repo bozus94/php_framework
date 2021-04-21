@@ -32,14 +32,15 @@ class Router
         $method = $this->request->method();
         $path = $this->request->getPath();
         $callback = $this->routes[$method][strtolower($path)] ?? false;
+
         if (is_string($callback)) {
             return new Template($callback, $this->params);
         }
+
         if ($callback === false) {
             $this->response->setResponseCode(404);
             return new Template('errors/_404');
         }
-
         call_user_func($callback);
     }
 

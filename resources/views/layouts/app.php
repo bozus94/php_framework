@@ -22,7 +22,9 @@
         </header>
 
         <main>
-            {{content}}
+            <div class="container">
+                {{content}}
+            </div>
         </main>
 
     </div>
