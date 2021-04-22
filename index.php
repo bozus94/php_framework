@@ -10,7 +10,7 @@ $app->router->get('/', 'home', ['mensaje' => ' probando parametros']);
 
 $app->router->get('/about', 'about');
 
-$app->router->get('/contact', 'contact');
-$app->router->post('/contact', [PageController::class, 'contact']);
+$app->router->get('/contact', [PageController::class, 'contact']);
+$app->router->post('/contact', [PageController::class, 'contactHandled']);
 
 $app->run();

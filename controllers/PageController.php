@@ -6,11 +6,25 @@ use app\core\Helpers;
 use app\core\Request;
 use app\core\Template;
 
-class PageController
+class PageController extends Controller
 {
-    public function contact(Request $request)
+    public function home()
     {
-        Helpers::pre_dump($request->getBody());
-        return new Template('contactPost');
+        $this->render('home');
+    }
+
+    public function about()
+    {
+        $this->render('about');
+    }
+
+    public function contact()
+    {
+        $this->render('contact');
+    }
+
+    public function contactHandled(Request $request)
+    {
+        $this->render('contactPost');
     }
 }

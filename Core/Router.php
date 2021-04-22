@@ -27,6 +27,12 @@ class Router
         $this->loadParams($params);
     }
 
+    public function view($path, $view, $params = [])
+    {
+        $this->routes['view'][$path] = $view;
+        $this->loadParams($params);
+    }
+
     public function resolve()
     {
         $method = $this->request->method();
@@ -37,7 +43,7 @@ class Router
             return new Template($callback, $this->params);
         }
 
-        if (\is_array($callback)) {
+        if (is_array($callback)) {
             $callback[0] = new $callback[0];
         }
 

@@ -6,15 +6,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/resources/assets/carrousel.css">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Boostrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
 
     <title>Hello, world!</title>
 </head>
 
 <body>
+    <!-- HEADER -->
     <div class="container">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between p-3 mb-4 border-bottom">
             <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
@@ -33,11 +38,19 @@
             </div>
         </header>
     </div>
+
+    <!-- MAIN -->
     <main>
         <div class="container mt-5">
             {{content}}
         </div>
     </main>
+
+    <!-- FOOTER -->
+    <footer class="container">
+        <p class="float-end"><a href="#">Back to top</a></p>
+        <p>© 2017–2021 Company, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+    </footer>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
