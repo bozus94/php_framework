@@ -52,7 +52,7 @@ class Router
             return new Template('errors/_404');
         }
 
-        call_user_func($callback, $this->request);
+        call_user_func($callback, ($method === 'post') ? $this->request : '');
     }
 
     public function loadParams(array $params = [])

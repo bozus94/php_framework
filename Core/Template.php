@@ -4,14 +4,19 @@ namespace app\core;
 
 class Template
 {
+    public $view, $params, $layout;
+
     public function __construct($view, $data = [], $layout = 'boostrap')
     {
-        echo $this->renderView($view, $data, $layout);
+        $this->params = $data;
+
+        $this->view = $this->getContent($view, $this->params);
+        $this->layout = $this->getLayout($layout);
+        echo !is_null($layout) ? $this->renderView() : $this->renderonlyView();
     }
 
     protected function getContent($view, $params)
     {
-
         ob_start();
         Helpers::inlclude_if_exists(Application::$rootPath . "/resources/views/$view.php", $params);
         return ob_get_clean();
@@ -19,15 +24,25 @@ class Template
 
     protected function getLayout($layout)
     {
+        if (is_null($layout)) {
+            return null;
+        }
+
         ob_start();
         Helpers::inlclude_if_exists(Application::$rootPath . "/resources/views/layouts/$layout.php");
         return ob_get_clean();
     }
 
-    public function renderView($view, $params, $layout)
+    protected function renderView()
     {
-        $baselayout = $this->getLayout($layout);
-        $content = $this->getContent($view, $params);
-        return str_replace('{{content}}', $content, $baselayout);
+        if (is_null($this->layout)) {
+            echo $this->view;
+        }
+        return str_replace('{{content}}', $this->view, $this->layout);
+    }
+
+    protected function renderonlyView()
+    {
+        return $this->view;
     }
 }

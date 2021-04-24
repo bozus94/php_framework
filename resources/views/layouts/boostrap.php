@@ -15,7 +15,7 @@
     <!-- Boostrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
 
-    <title>Hello, world!</title>
+    <title>Framework</title>
 </head>
 
 <body>
@@ -32,9 +32,11 @@
                 <li><a href="/about" class="nav-link px-2 link-dark">Acerca De</a></li>
             </ul>
 
-            <div class="col-md-3 text-end invisible">
-                <button type="button" class="btn btn-outline-primary me-2">Login</button>
-                <button type="button" class="btn btn-primary">Sign-up</button>
+            <div class="col-md-3 text-end">
+                <div class="btn-group" role="group">
+                    <a href="/sing-in" class="btn btn-outline-primary">Login</a>
+                    <a href="/register" class="btn btn-primary">Sign-up</a>
+                </div>
             </div>
         </header>
     </div>
