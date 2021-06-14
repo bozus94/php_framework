@@ -26,6 +26,6 @@ class PageController extends Controller
     public function contactHandled(Request $request)
     {
         $this->render('contactPost');
-        $this->pre_dump($request->body());
+        $this->pre_dump($request->getBody());
     }
 }
