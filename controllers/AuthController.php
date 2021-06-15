@@ -29,10 +29,10 @@ class AuthController extends Controller
         $register->loadData($request->getBody());
 
         if ($register->validate()) {
-            return 'registered!';
+            echo 'registered!';
+        } else {
+            \var_dump($register->errors);
         }
-
-        var_dump($register->errors);
     }
 
     public function logAuth()
