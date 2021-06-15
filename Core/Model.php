@@ -16,9 +16,7 @@ abstract class Model
 
     public function loadData($data)
     {
-        /* We go through the received data and compare them if they coincide with the 
-        properties of the existing model. If it is true, we set the properties with 
-        their respective value; */
+        /* We go through the received data and compare them if they coincide with the properties of the existing model. If it is true, we set the properties with their respective value; */
 
         foreach ($data as $key => $value) {
             if (property_exists($this, $key)) {
@@ -35,6 +33,7 @@ abstract class Model
             $value = $this->{$attribute};
             foreach ($rules as $rule) {
                 $ruleName = (is_array($rule) ? $rule[0] : $rule);
+
                 if ($ruleName === self::RULE_REQUIRE  && !$value) {
                     $this->addError($attribute, self::RULE_REQUIRE);
                 }
@@ -50,6 +49,7 @@ abstract class Model
                 if ($ruleName === self::RULE_MIN  && \strlen($value) < $rule['min']) {
                     $this->addError($attribute, self::RULE_MIN, $rule);
                 }
+
                 if ($ruleName === self::RULE_MATCH  && $value !== $this->{$rule['match']}) {
                     $this->addError($attribute, self::RULE_MATCH, $rule);
                 }
@@ -60,14 +60,14 @@ abstract class Model
 
     public function addError(string $attribute, string $rule, array $params = [])
     {
-        $message = $this->ErrorMessages()[$rule] ?? '';
+        $message = $this->errorMessages()[$rule] ?? '';
         foreach ($params as $key => $value) {
             $message = str_replace("{{$key}}", $value, $message);
         }
         $this->errors[$attribute][] = $message;
     }
 
-    public function ErrorMessages()
+    public function errorMessages()
     {
         return [
             self::RULE_REQUIRE => 'This field is required.',
@@ -78,12 +78,12 @@ abstract class Model
         ];
     }
 
-    public function hasError(string $attribute)
+    public function hasError($attribute)
     {
         return $this->errors[$attribute] ?? false;
     }
 
-    public function getFirstError(string $attribute)
+    public function getFirstError($attribute)
     {
         return $this->errors[$attribute][0] ?? false;
     }
