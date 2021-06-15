@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\core\Helpers;
 use app\core\Request;
 use app\models\RegisterModel;
 
@@ -31,7 +32,7 @@ class AuthController extends Controller
         if ($register->validate()) {
             echo 'registered!';
         } else {
-            \var_dump($register->errors);
+            return $this->render('auth/register', ['model' => $register]);
         }
     }
 
