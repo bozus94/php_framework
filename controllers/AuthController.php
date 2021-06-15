@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\core\Request;
+use app\models\RegisterModel;
 
 class AuthController extends Controller
 {
@@ -10,6 +11,7 @@ class AuthController extends Controller
     {
         $this->render('auth/sing-in');
     }
+
     public function logIn(Request $request)
     {
         echo 'Logueado';
@@ -20,10 +22,11 @@ class AuthController extends Controller
     {
         $this->render('auth/register');
     }
+
     public function registered(Request $request)
     {
-        echo 'Registrado';
-        $this->pre_dump($request->getBody());
+        $register = new RegisterModel($request->getBody());
+        var_dump($register);
     }
 
     public function logAuth()

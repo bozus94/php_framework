@@ -2,9 +2,7 @@
 
 namespace app\controllers;
 
-use app\core\Helpers;
 use app\core\Request;
-use app\core\Template;
 
 class PageController extends Controller
 {
