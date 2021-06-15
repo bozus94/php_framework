@@ -1,8 +1,8 @@
 <form class="row g-3" method="POST" action="/register">
     <h1>Crear Cuenta</h1>
     <div class="col-md-6">
-        <label for=FirstName class="form-label">Nombre</label>
-        <input type="text" class="form-control" id=FirstName name=firsName>
+        <label for=firstName class="form-label">Nombre</label>
+        <input type="text" class="form-control" id=firstName name=firstName>
     </div>
     <div class="col-md-6">
         <label for=LastName class="form-label">Apellido</label>
@@ -26,7 +26,7 @@
     </div>
     <div class="col-12">
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck" name="terms" value="accepted">
+            <input class="form-check-input" type="checkbox" id="gridCheck" name="terms" value="true" required>
             <label class="form-check-label" for="gridCheck" value="accepted">
                 Acepto los terminos.
             </label>

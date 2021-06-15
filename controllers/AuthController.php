@@ -25,8 +25,14 @@ class AuthController extends Controller
 
     public function registered(Request $request)
     {
-        $register = new RegisterModel($request->getBody());
-        var_dump($register);
+        $register = new RegisterModel();
+        $register->loadData($request->getBody());
+
+        if ($register->validate()) {
+            return 'registered!';
+        }
+
+        var_dump($register->errors);
     }
 
     public function logAuth()
