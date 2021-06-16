@@ -28,11 +28,10 @@ class AuthController extends Controller
     {
         $register = new RegisterModel();
         $register->loadData($request->getBody());
-
         if ($register->validate()) {
             echo 'registered!';
         } else {
-            return $this->render('auth/register', ['model' => $register]);
+            $this->render('auth/register', ['model' => $register]);
         }
     }
 

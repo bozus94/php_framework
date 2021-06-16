@@ -1,20 +1,18 @@
-
 <?php
 
 use app\core\form\Form;
+use app\models\RegisterModel;
 
-$form = Form::begin('/register', 'POST', 'row g-3');
-echo '<h1>Crear Cuenta</h1>';
-$form->field($model, 'Nombre', 'firstName', 'text');
-Form::end();
+$form = Form::begin('/register', 'POST', 'row g-3') ?>
 
-/* <form class="row g-3" method="POST" action="/register">
-    <h1>Crear Cuenta</h1>
-    <div class="col-md-6">
-        <label for="firstName" class="form-label">Nombre</label>
-        <input type="text" class="form-control <?= ($model->hasError['firstName']) ? 'is-invalid' : '' ?>" id="firstName" name="firstName" value="<?= ($model->firstName) ?? '' ?>">
-        <div class="invalid-feedback">
-            <?= $model->getFirstError('firstName')) ?? '' ?>
-        </div>
-    </div>
-     */
+<h1>Crear Cuenta</h1>
+
+<div class="col"><?= $form->field(($model) ?? new RegisterModel, 'Nombre', 'firstName', 'text'); ?></div>
+<div class="col-6"><?= $form->field(($model) ?? new RegisterModel, 'Apellido', 'lastName', 'text'); ?></div>
+<div class="col-6"><?= $form->field(($model) ?? new RegisterModel, 'Correo electronico', 'email', 'email'); ?></div>
+<div class="col-6"><?= $form->field(($model) ?? new RegisterModel, 'Usuario', 'user', 'user'); ?></div>
+<div class="col-12"><?= $form->field(($model) ?? new RegisterModel, 'Contraeña', 'password', 'password'); ?></div>
+<div class="col-12"><?= $form->field(($model) ?? new RegisterModel, 'Confirmar la contraseña', 'confirmPassword', 'password'); ?></div>
+<div class="col-12"><?= $form->check(($model) ?? new RegisterModel, 'Acepto los terminos', 'terms'); ?></div>
+<div class="col-12"><?= $form->submit('Enviar'); ?></div>
+<?= Form::end(); ?>

@@ -20,11 +20,21 @@ class Form
 
     public static function end()
     {
-        echo '</form>';
+        return '</form>';
     }
 
     public function field(Model $model, $label, $attribute, $type)
     {
         return new Field($model, $label, $attribute, $type);
+    }
+
+    public function submit($label)
+    {
+        return new Submit($label);
+    }
+
+    public function check(Model $model, $label, $attribute)
+    {
+        return new Check($model, $label, $attribute);
     }
 }
