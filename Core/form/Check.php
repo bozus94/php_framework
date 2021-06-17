@@ -19,17 +19,23 @@ class Check
     {
         return sprintf(
             '<div class="form-check">
-                <input class="form-check-input" type="checkbox" value="%s" id="%s" name="%s" %s>
+                <input class="form-check-input %s" type="checkbox" value="%s" id="%s" name="%s" %s>
                 <label class="form-check-label" for="%s">
                     %s
                 </label>
-            </div>',
+                <div id="invalidCheck3Feedback" class="invalid-feedback">
+                    %s
+                </div>
+            </div>
+            ',
+            $this->model->hasError($this->attribute) ? 'is-invalid' : '',
             $this->attribute,
             $this->attribute,
             $this->attribute,
             (!empty($this->model->terms)) ? 'checked' : '',
             $this->attribute,
             $this->label,
+            $this->model->getFirstError($this->attribute) ?? ''
         );
     }
 }
