@@ -1,5 +1,5 @@
-CREATE DATABASE if NOT EXISTS appordenada;
-USE appordenada;
+CREATE DATABASE if NOT EXISTS php_framework;
+USE php_framework;
 CREATE TABLE  products (
     id INT(10) NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(60) NOT NULL,

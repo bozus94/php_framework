@@ -46,4 +46,11 @@ class Helpers
         echo "</pre>";
         exit;
     }
+
+    public static function ob_get_clean($path)
+    {
+        ob_start();
+        self::inlclude_if_exists($path);
+        return ob_get_clean();
+    }
 }
