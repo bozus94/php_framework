@@ -5,7 +5,7 @@ $dotenv->load();
 
 $config = [
     'db' => [
-        'dns' => $_ENV['DB_DNS'] . $_ENV['DB_NAME'],
+        'dsn' => $_ENV['DB_DSN'] . $_ENV['DB_NAME'],
         'user' => $_ENV['DB_USER'],
         'password' => $_ENV['DB_PASSWORD']
     ]

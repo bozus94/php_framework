@@ -39,12 +39,12 @@ class Helpers
         }
     }
 
-    public static function pre_dump($param)
+    public static function pre_dump($param, $exit = null)
     {
         echo "<pre>";
         var_dump($param);
         echo "</pre>";
-        exit;
+        $exit === true ? exit : '';
     }
 
     public static function ob_get_clean($path)
@@ -52,5 +52,11 @@ class Helpers
         ob_start();
         self::inlclude_if_exists($path);
         return ob_get_clean();
+    }
+
+
+    public static function log($message)
+    {
+        echo "[" . \date('Y-m-d H:i:s') .  '] - ' . $message . "<br>";
     }
 }
